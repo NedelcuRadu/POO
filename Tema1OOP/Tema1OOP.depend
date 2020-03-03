@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1583276032 source:e:\c++\tema1oop\main.cpp
+	"polinom.h"
+
+1583252265 e:\c++\tema1oop\lista.h
+
+1583252278 source:e:\c++\tema1oop\lista.cpp
+	"lista.h"
+
+1583276111 source:e:\c++\tema1oop\polinom.cpp
+	"polinom.h"
+	<bits/stdc++.h>
+
+1583276111 e:\c++\tema1oop\polinom.h
+	<bits/stdc++.h>
+	"lista.h"
+
