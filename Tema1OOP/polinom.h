@@ -59,6 +59,7 @@ class  Polinom {
 
         return res;
     }
+
     Polinom operator - (Polinom const &obj) {
         Polinom res;
         int i = 0;
@@ -101,15 +102,16 @@ class  Polinom {
 
     Polinom operator * (Polinom const &obj) {
         Polinom res;
-        pNod A = root;
+        pNod A = root->get_urm();
         for(int i = 0; i < nr_elem; i++) {
-            A = A->get_urm();
             Polinom P;
             pNod B = obj.root;
             for(int j = 0; j < obj.nr_elem; j++) {
                 B = B->get_urm();
                 P.add_monom(A->get_coef()*B->get_coef(), A->get_putere() + B->get_putere());
             }
+            A = A->get_urm();
+           // cout<<P<<endl;
             res = res + P;
         }
         return res;

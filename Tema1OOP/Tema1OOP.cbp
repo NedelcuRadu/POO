@@ -35,6 +35,8 @@
 		<Unit filename="lista.cpp" />
 		<Unit filename="lista.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="polinom.cpp" />
+		<Unit filename="polinom.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

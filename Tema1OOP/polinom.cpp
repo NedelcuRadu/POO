@@ -84,7 +84,8 @@ using namespace std;
     int nr;
     cout << "Nr de elemente: ";
     in >> nr;
-    int coef, exp;
+    double coef;
+    int exp;
     for(int i = 1; i <= nr; i++) {
         cout << "Coeficientul termenului " << i << ": ";
         in >> coef;
