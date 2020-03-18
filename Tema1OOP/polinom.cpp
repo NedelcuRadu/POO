@@ -15,16 +15,7 @@ using namespace std;
             A = A->get_urm();
         }
     }
-    Polinom::~Polinom(){
-        pNod current = root->get_urm();
-        pNod next;
-        for(int i = 0; i < nr_elem; i++) {
-            next = current->get_urm();
-        delete(current);
-        current = next;
-        }
-        delete root;
-    }
+
     int Polinom::get_nrelem() {
         return nr_elem;
     }
@@ -46,21 +37,7 @@ using namespace std;
         pNod p = root->get_urm();
         for(int i = 0; i < nr_elem; i++) { // Pt fiecare element din polinom
             double coef = p->get_coef(); // Tinem minte coeficientul
-            if(AreDoubleSame(coef, 0)) {
-                // Daca coef e 0, monomul e 0
-            } else if(AreDoubleSame(coef, 1)) // Daca coef e 1, printam doar X^putere
-                cout << "X^" << p->get_putere();
-            else {
-                if(p->get_putere() == 0) // Daca puterea e 0, afisam coef
-                    cout << p->get_coef();
-                else if(p->get_putere() == 1) // Daca puterea e 1, afisam coef * X;
-                    cout << p->get_coef() << "*X";
-                else
-                    cout << p->get_coef() << "*X^" << p->get_putere(); // Afisam coef * X ^ Putere
-            }
-            p = p->get_urm(); // Trecem la urm monom
-            if (i < nr_elem - 1 && p->get_coef() > 0) // Daca nu suntem la ultimul monom si semnul e pozitiv
-                cout << "+";
+            cout<<p->get_coef()<<"*X*"<<p->get_putere()<<" ";
         }
         cout << endl;
     }

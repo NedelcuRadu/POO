@@ -13,7 +13,6 @@ class  Polinom {
     Polinom() ;
     Polinom(int put, double coeff) ;
     Polinom(const Polinom &p2) ;
-    ~Polinom();
     int get_nrelem() ;
     pNod get_root();
     double calcul(double x) ;
@@ -111,8 +110,7 @@ class  Polinom {
                 P.add_monom(A->get_coef()*B->get_coef(), A->get_putere() + B->get_putere());
             }
             A = A->get_urm();
-           // cout<<P<<endl;
-            res = res + P;
+            res = res+P;
         }
         return res;
     }
