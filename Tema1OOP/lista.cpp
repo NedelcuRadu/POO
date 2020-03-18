@@ -4,6 +4,12 @@ void nod::set_monom(double coeff, int put) {
         coef = coeff;
         putere = put;
     };
+    nod::~nod()
+    {
+        coef=0;
+        putere=0;
+        urm=nullptr;
+    }
     void nod::set_putere(int put) {
         putere = put;
     }

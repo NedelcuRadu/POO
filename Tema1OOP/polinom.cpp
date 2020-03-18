@@ -15,17 +15,15 @@ using namespace std;
             A = A->get_urm();
         }
     }
-     /*Polinom::~Polinom(){
+    Polinom::~Polinom(){
         pNod current = root->get_urm();
         pNod next;
         for(int i = 0; i < nr_elem; i++) {
             next = current->get_urm();
-        delete(current);
         current = next;
         }
         delete root;
-    } */
-
+    }
     int Polinom::get_nrelem() {
         return nr_elem;
     }

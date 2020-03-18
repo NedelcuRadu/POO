@@ -13,7 +13,7 @@ class  Polinom {
     Polinom() ;
     Polinom(int put, double coeff) ;
     Polinom(const Polinom &p2) ;
-    //~Polinom();
+    ~Polinom();
     int get_nrelem() ;
     pNod get_root();
     double calcul(double x) ;

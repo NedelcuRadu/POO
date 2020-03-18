@@ -7,6 +7,7 @@ class nod {
     int putere;
     nod *urm;
   public:
+    ~nod();
     void set_monom(double coeff, int put);
     void set_putere(int put);
     void set_urm(pNod&p);
