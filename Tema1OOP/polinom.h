@@ -115,14 +115,17 @@ class  Polinom {
         }
         return res;
     }
-    Polinom * citire_polinoame(int nr) {
-        Polinom A[nr + 1];
+  
+    std::vector<Polinom> citire_polinoame(int nr) {
+        std::vector<Polinom> arr;
         for(int i = 0; i < nr; i++) {
-            cin >> A[i];
+            Polinom x;
+            cin >> x;
+            arr.push_back(x);
         }
-        for(int i = 0; i < nr; i++)
-            cout << A[i];
-        return A;
+        for (auto i : arr)
+            cout << i;
+        return arr;
     }
 
     friend ostream & operator << (ostream &out, const Polinom &c);
