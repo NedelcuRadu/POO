@@ -14,5 +14,10 @@ int main() {
     cout<<'\n';
     cout<<"B-A: "<<b-a<<endl;
     cout<<"B*A: "<<b*a;
+    vector<Polinom> Obj = b.citire_polinoame(2);
+
+    for (auto i:Obj)
+        cout<<i;
+     
     return 0;
 }
