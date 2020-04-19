@@ -25,7 +25,7 @@ natural);
 5. Citirea informațiilor complete a N obiecte, memorarea și afisarea acestora.
 
 ## Bonus:
-- [X] Move Semantics (using Swap And Copy Idiom)
+- [X] Move Semantics (using Copy And Swap Idiom)
 - [X] Template Functions
 - [X] Encapsulation via headers
 - [X] Custom exception class
