@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1587334813 source:e:\c++\tema2oop\main.cpp
+	<bits/stdc++.h>
+	"Graf_Orientat.h"
+	"Graf_Neorientat.h"
+	"Vector.h"
+	"exception.h"
+
+1587334517 e:\c++\tema2oop\lista.h
+	"Vector.h"
+	"exception.h"
+
+1587334579 e:\c++\tema2oop\vector.h
+	<bits/stdc++.h>
+	"exception.h"
+
+1587305111 e:\c++\tema2oop\matrice.h
+	<bits/stdc++.h>
+
+1587334078 e:\c++\tema2oop\graf.h
+	<bits/stdc++.h>
+
+1587305085 e:\c++\tema2oop\graf_neorientat.h
+	"Lista.h"
+	"Graf.h"
+
+1587334700 e:\c++\tema2oop\exception.h
+	<exception>
+	<cstring>
+
+1587334078 e:\c++\tema2oop\graf_orientat.h
+	"Matrice.h"
+	"Graf.h"
+
+1587334087 source:e:\c++\tema2oop\graf.cpp
+	"Graf.h"
+	<bits/stdc++.h>
+
+1587303767 source:e:\c++\tema2oop\graf_neorientat.cpp
+	"Graf_Neorientat.h"
+	<bits/stdc++.h>
+
+1587302779 source:e:\c++\tema2oop\lista.cpp
+
+1587304741 source:e:\c++\tema2oop\matrice.cpp
+
+1587334112 source:e:\c++\tema2oop\graf_orientat.cpp
+	"Graf_Orientat.h"
+	"exception.h"
+
