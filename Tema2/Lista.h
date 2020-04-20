@@ -19,7 +19,7 @@ class Lista {
         swap(first.dim, second.dim);
         swap(first.l, second.l);
     }
-    Lista<T>(int dim = 0): dim(dim), l(dim ? new Vector<T>[dim] : nullptr) {
+    Lista<T>(int dim = 0): l(dim ? new Vector<T>[dim] : nullptr),dim(dim)  {
         if(dim<0)
             throw MyException(__LINE__,__FILE__,__FUNCTION__, "List Dimension cannot be negative");
         cout << "Lista Constructor\n";

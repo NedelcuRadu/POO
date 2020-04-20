@@ -23,7 +23,7 @@ class Vector {
     }
     Vector<T>(size_t dim = 0): dim(dim) {
         if (dim > dim_max)
-            dim_max = 2 *dim + 1;
+            dim_max = 2 * dim + 1;
         try {
             v = dim_max ? new T[dim_max] : nullptr;
             std::cout << "Vector<T> Constructor\n";
@@ -36,9 +36,9 @@ class Vector {
         delete []v;
 
     };
-    Vector<T>(const Vector<T> &other):dim(other.dim),dim_max(other.dim_max),v(other.dim_max? new T[other.dim_max]:nullptr){
+    Vector<T>(const Vector<T> &other): dim(other.dim), dim_max(other.dim_max), v(other.dim_max ? new T[other.dim_max] : nullptr) {
         std::cout << "Vector<T> Copy Constructor\n";
-      copy(other.v,other.v+other.dim_max,v);
+        copy(other.v, other.v + other.dim_max, v);
     }
     Vector<T>(Vector<T> &&other) noexcept: Vector<T>() {
         swap(*this, other);
@@ -62,7 +62,7 @@ class Vector {
     }
     T & operator [](int index) {
         if (index >= dim)
-            throw MyException(__LINE__,__FILE__,__FUNCTION__, "Vector Index Out Of Range");
+            throw MyException(__LINE__, __FILE__, __FUNCTION__, "Vector Index Out Of Range");
         return v[index];
     }
     void push_back(T val) {
@@ -72,7 +72,7 @@ class Vector {
             try {
                 dim_max = 2 * dim;
                 T *temp = new T[dim_max];
-                copy(v,v+dim,temp);
+                copy(v, v + dim, temp);
                 v = move(temp);
                 v[dim++] = val;
             } catch(bad_alloc&  ba) {
@@ -103,7 +103,7 @@ class Vector {
         T x;
         cout << "Nr elemente: ";
         cin >> temp;
-        cout<<"Dati elementele: ";
+        cout << "Dati elementele: ";
         for(auto i = 0; i < temp; i++) {
             cin >> x;
             other.push_back(x);
