@@ -6,7 +6,7 @@ _Se dau urmatoarele clase:_
 - Lista (Vector *l) – lista de adiacenta
 - Graf (int nr_noduri) – clasa abstracta
 - Graf_Neorientat(Lista L) : Graf
-- Graf_Orientat (Matrice A) :Graf  
+- Graf_Orientat (Matrice A) : Graf  
 
 
 Clasele derivate trebuie sa contina constructor parametrizat prin care sa se evidentieze
