@@ -29,4 +29,4 @@ natural);
 - [X] Template Functions
 - [X] Encapsulation via headers
 - [X] Custom exception class
-- [ ] Diamond Inheritance
+- [X] Diamond Inheritance
