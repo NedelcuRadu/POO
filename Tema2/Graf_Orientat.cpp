@@ -6,46 +6,52 @@ void swap(Graf_Orientat& first, Graf_Orientat& second) noexcept{ // nothrow
 
     // by swapping the members of two objects,
     // the two objects are effectively swapped
-    swap(first.nr_noduri, second.nr_noduri);
-    swap(first.viz, second.viz);
+    swap(dynamic_cast<Graf&>(first),dynamic_cast<Graf&>(second));
     swap(first.A, second.A);
 }
-Graf_Orientat::Graf_Orientat(int nr_noduri): Graf(nr_noduri), A(nr_noduri, nr_noduri), viz(nr_noduri ? new int [nr_noduri] : nullptr) {
+Graf_Orientat::Graf_Orientat(int nr_noduri): Graf(nr_noduri), A(nr_noduri, nr_noduri) {
     cout << "Graf_Orientat Constructor\n";
 };
-Graf_Orientat::Graf_Orientat(const Graf_Orientat &other): Graf(other), A(other.A), viz(nr_noduri ? new int [nr_noduri] : nullptr) {
-    std::copy(other.viz, other.viz + nr_noduri, viz);
+Graf_Orientat::Graf_Orientat(const Graf_Orientat &other): Graf(other), A(other.A){
     std::cout << "Graf_Orientat Copy Constructor\n";
 }
 Graf_Orientat::~Graf_Orientat() {
     cout << "Graf_Orientat Destructor\n";
-    delete []viz;
 }
-void Graf_Orientat::DFS(int nod) {
+Graf_Orientat::Graf_Orientat(Graf_Orientat &&other): Graf_Orientat()
+{ swap(*this,other);
+    cout<<"Graf_Orientat Move Constructor";
+
+}
+
+Graf_Orientat & Graf_Orientat::operator = (Graf_Orientat other) {
+    std::cout << "Graf_Orientat Move\n";
+    swap(*this, other);
+    return *this;
+}
+void Graf_Orientat::DFS_orientat(int nod) {
     try {
         cout << nod << " ";
         viz[nod] = 1;
         for(int i = 0; i < nr_noduri; i++)
-            if(A[nod][i] && viz[i] == -1) {
-                DFS(i);
+            if(A[nod][i] && !viz[i]) {
+                DFS_orientat(i);
             }
     } catch(const char* err) {
         cerr << err;
     }
 };
 void Graf_Orientat::conex_din_nod(int nod) {
-    for(int i = 0; i < nr_noduri; i++)
-        viz[i] = -1;
-    viz[nod] = nod;
-    DFS(nod);
+    reset_viz();
+    viz[nod] = 1;
+    DFS_orientat(nod);
     std::cout << '\n';
 }
 void Graf_Orientat::componente_conexe() {
+    reset_viz();
     for(int i = 0; i < nr_noduri; i++)
-        viz[i] = -1;
-    for(int i = 0; i < nr_noduri; i++)
-        if(viz[i] == -1) {
-            DFS(i);
+        if(viz[i] == 0) {
+            DFS_orientat(i);
             cout << '\n';
         }
 }
@@ -64,12 +70,13 @@ istream & operator >> (istream &in, Graf_Orientat &other) {
     cout << "Dati nr de noduri: ";
     in >> nr_noduri;
     Graf_Orientat temp(nr_noduri);
-    cout << "Dati nr de arce: ";
+    if(nr_noduri>0)
+    {cout << "Dati nr de arce: ";
     cin >> nr_arce;
     for(int i = 0; i < nr_arce; i++) {
         cin >> x >> y;
         temp.add_muchie(x, y);
-    }
+    }}
     swap(temp, other);
     return in;
 }

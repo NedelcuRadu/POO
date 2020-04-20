@@ -7,16 +7,14 @@ void swap(Graf_Neorientat& first, Graf_Neorientat& second) { // nothrow
     using std::swap;
     // by swapping the members of two objects,
     // the two objects are effectively swapped
-    swap(first.nr_noduri, second.nr_noduri);
-    swap(first.viz, second.viz);
+    swap(dynamic_cast<Graf&>(first),dynamic_cast<Graf&>(second));
     swap(first.l, second.l);
 }
-Graf_Neorientat::Graf_Neorientat(int nr_noduri): Graf(nr_noduri), l(nr_noduri), viz(nr_noduri ? new int [nr_noduri] : nullptr) {}
+Graf_Neorientat::Graf_Neorientat(int nr_noduri): Graf(nr_noduri), l(nr_noduri){}
 Graf_Neorientat::~Graf_Neorientat() {
     std::cout << "Graf_Neorientat Destructor\n";
-    delete[]viz;
 }
-Graf_Neorientat::Graf_Neorientat(const Graf_Neorientat &other): Graf(other), l(other.l), viz(other.nr_noduri ? new int [other.nr_noduri] : nullptr) {
+Graf_Neorientat::Graf_Neorientat(const Graf_Neorientat &other): Graf(other), l(other.l) {
     std::copy(other.viz, other.viz + other.nr_noduri, viz);
     std::cout << "Graf_Neorientat Copy Constructor\n";
 }
@@ -49,29 +47,27 @@ void Graf_Neorientat::add_muchie(int x, int y) { // Eroare daca x sau y > dimens
         std::cout << "Nu exista cel putin unul dintre nodurile: " << x << " " << y << '\n';
     }
 }
-void Graf_Neorientat::DFS(int nod) {
+void Graf_Neorientat::DFS_neorientat(int nod) {
     viz[nod] = 1;
     cout << nod << " ";
     try {
         for(int i = 0; i < l[nod].size(); i++)
-            if (viz[l[nod][i]] != -1)
-                DFS(l[nod][i]);
+            if (!viz[l[nod][i]])
+                DFS_neorientat(l[nod][i]);
     } catch(const char* err) {
         cerr << err;
     }
 };
 void Graf_Neorientat::conex_din_nod(int nod) {
-    for(int i = 0; i < nr_noduri; i++)
-        viz[i] = -1;
-    DFS(nod);
+    reset_viz();
+    DFS_neorientat(nod);
     cout << '\n';
 }
 void Graf_Neorientat::componente_conexe() {
+    reset_viz();
     for(int i = 0; i < nr_noduri; i++)
-        viz[i] = -1;
-    for(int i = 0; i < nr_noduri; i++)
-        if(viz[i] == -1) {
-            DFS(i);
+        if(!viz[i]) {
+            DFS_neorientat(i);
             cout << '\n';
         }
 }
@@ -85,12 +81,13 @@ istream & operator >> (istream &in, Graf_Neorientat &other) {
     cout << "Dati nr de noduri: ";
     in >> nr_noduri;
     Graf_Neorientat temp(nr_noduri);
-    cout << "Dati nr de arce: ";
+    if(nr_noduri>0)
+    {cout << "Dati nr de arce: ";
     cin >> nr_arce;
     for(int i = 0; i < nr_arce; i++) {
         cin >> x >> y;
         temp.add_muchie(x, y);
-    }
+    }}
     swap(other, temp);
     return in;
 }

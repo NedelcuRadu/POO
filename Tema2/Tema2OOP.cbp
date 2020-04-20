@@ -43,6 +43,7 @@
 		<Unit filename="Matrice.cpp" />
 		<Unit filename="Matrice.h" />
 		<Unit filename="Vector.h" />
+		<Unit filename="exception.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

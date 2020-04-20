@@ -1,6 +1,7 @@
 #ifndef LISTA_H_INCLUDED
 #define LISTA_H_INCLUDED
 #include "Vector.h"
+#pragma once
 #include "exception.h"
 using namespace std;
 template <class T>

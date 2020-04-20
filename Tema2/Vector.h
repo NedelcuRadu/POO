@@ -2,6 +2,7 @@
 #define VECTOR_H_INCLUDED
 #include <bits/stdc++.h>
 #include "exception.h"
+#pragma once
 using namespace std;
 template<class T>
 class Vector {
