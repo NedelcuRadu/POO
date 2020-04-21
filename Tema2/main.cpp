@@ -1,11 +1,9 @@
 #include "Graf_Comp.h"
 template<class T>
-vector<T> citeste_n(int n) {
-    vector<T> A;
+T* citeste_n(int n) {
+    T A[n];
     for(int i = 0; i < n; i++) {
-        T temp;
-        cin >> temp;
-        A.push_back(temp);
+        cin >> A[i];
     }
     for(int i = 0; i < n; i++)
         cout << A[i] << '\n';
