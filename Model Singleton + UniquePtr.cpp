@@ -9,7 +9,7 @@ private:
 
 public:
     Singleton(const Singleton&) = delete;
-    void operator = (Singleton const &);
+    void operator = (Singleton const &) = delete;
     static Singleton* get_instance()
     {
         if(!instance)
