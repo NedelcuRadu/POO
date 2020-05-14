@@ -20,6 +20,8 @@ public:
     };
     ~Gestiune()
     {
+        for(auto i = multime->begin(); i!=multime->end(); ++i)
+            delete (*i).first;
         delete multime;
     }
     Gestiune(const Gestiune&other):multime(new  set<pair<Locuinta*,T>>(other.multime)) {};
@@ -72,6 +74,8 @@ public:
     };
     ~Gestiune()
     {
+        for(auto i = multime->begin(); i!=multime->end(); ++i)
+            delete (*i).first;
         delete multime;
     }
     Gestiune(const Gestiune<Casa>&other):nr_case(other.nr_case)
@@ -87,7 +91,7 @@ public:
     }
     void operator +=(Casa&obj)
     {
-       // obj.set_index(nr_case);
+        // obj.set_index(nr_case);
         multime->insert({dynamic_cast<Locuinta*>(&obj),obj});
         nr_case+=1;
     }
