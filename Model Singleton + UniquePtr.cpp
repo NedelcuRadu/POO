@@ -1,5 +1,27 @@
 #include <bits/stdc++.h>
-#include <memory>
+class MyException: public std::exception
+{   int line;
+    const char* file;
+    const char* function;
+    std::string info;
+    public:
+MyException(int line, const char* file, const char * function, std::string info=""): line(line), file(file), function(function), info(info) {};
+int  get_line() const noexcept {
+    return line;
+}
+const char *  get_file() const noexcept {
+    return file;
+}
+const char *  get_function() const noexcept {
+    return function;
+}
+const char*  what() const noexcept {
+    std::cout << "Error in " << file << " in function " << function << " at line " << line << '\n';
+    if (info != "")
+        std::cout << "Description: " << info << '\n';
+    return "Check constructor arguments\n";
+}
+};
 using namespace std;
 class Singleton
 {
